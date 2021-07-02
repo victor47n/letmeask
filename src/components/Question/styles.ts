@@ -1,3 +1,6 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
 .question {
     background: #FEFEFE;
     border-radius: 8px;
@@ -84,3 +87,4 @@
         }
     }
 }
+`;

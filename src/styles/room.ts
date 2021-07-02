@@ -1,3 +1,6 @@
+import styled from 'styled-components';
+
+export const Container = styled.div`
 #page-room {
     header {
         padding: 24px;
@@ -107,5 +110,30 @@
         .question-list {
             margin-top: 32px;
         }
+
+        .empty-question {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+
+            > div {
+                width: 284px;
+                text-align: center;
+
+                p {
+                    font: 500 18px 'Poppins', sans-serif;
+                    color: ${props => props.theme.colors.text.primary}
+                }
+
+                span {
+                    margin-top: 8px;
+                    font-size: 14px;
+                    line-height: 21px;
+                    color: ${props => props.theme.colors.text.tertiary}
+                }
+            }            
+        }
     }
-}
+}`;

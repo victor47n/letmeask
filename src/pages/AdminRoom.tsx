@@ -4,13 +4,15 @@ import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
+import emptyQuestion from '../assets/images/empty-questions.svg';
 
 import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { useRoom } from '../hooks/useRoom';
 
-import '../styles/room.scss';
+import { Container } from '../styles/room';
+
 import { database } from '../services/firebase';
 
 type RoomParams = {
@@ -51,62 +53,79 @@ export function AdminRoom() {
     }
 
     return (
-        <div id="page-room">
-            <header>
-                <div className="content">
-                    <img src={logoImg} alt="Letmeask" />
-                    <div>
-                        <RoomCode code={roomId} />
-                        <Button isOutlined onClick={handleCloseRoom}>Encerrar sala</Button>
+        <Container>
+            <div id="page-room">
+                <header>
+                    <div className="content">
+                        <img src={logoImg} alt="Letmeask" />
+                        <div>
+                            <RoomCode code={roomId} />
+                            <Button isOutlined onClick={handleCloseRoom}>Encerrar sala</Button>
+                        </div>
                     </div>
-                </div>
-            </header>
+                </header>
 
-            <main>
-                <div className="room-title">
-                    <h1>Sala {title}</h1>
-                    {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
-                </div>
+                <main>
+                    <div className="room-title">
+                        <h1>Sala {title}</h1>
+                        {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+                    </div>
 
-                <div className="question-list">
-                    {questions.map(question => {
-                        return (
-                            <Question
-                                key={question.id}
-                                content={question.content}
-                                author={question.author}
-                                isAnswered={question.isAnswered}
-                                isHighlighted={question.isHighlighted}
-                            >
-                                {!question.isAnswered && (
-                                    <>
+                    <div className="question-list">
+                        {questions.length > 0 ? (
+                            questions.map(question => {
+                                return (
+                                    <Question
+                                        key={question.id}
+                                        content={question.content}
+                                        author={question.author}
+                                        isAnswered={question.isAnswered}
+                                        isHighlighted={question.isHighlighted}
+                                    >
+                                        {!question.isAnswered && (
+                                            <>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleCheckAsAnswered(question.id)}
+                                                >
+                                                    <img src={checkImg} alt="Marcar pergunta como respondida" />
+                                                </button>
+
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleHighlightQuestion(question.id, question.isHighlighted)}
+                                                >
+                                                    <img src={answerImg} alt="Dar destaque à pergunta" />
+                                                </button>
+                                            </>
+                                        )}
+
                                         <button
                                             type="button"
-                                            onClick={() => handleCheckAsAnswered(question.id)}
+                                            onClick={() => handleDeleteQuestion(question.id)}
                                         >
-                                            <img src={checkImg} alt="Marcar pergunta como respondida" />
+                                            <img src={deleteImg} alt="Remover pergunta" />
                                         </button>
+                                    </Question>
+                                );
+                            })
+                        ) : (
+                            <div className="empty-question">
+                                <img src={emptyQuestion} alt="Sem perguntas" />
 
-                                        <button
-                                            type="button"
-                                            onClick={() => handleHighlightQuestion(question.id, question.isHighlighted)}
-                                        >
-                                            <img src={answerImg} alt="Dar destaque à pergunta" />
-                                        </button>
-                                    </>
-                                )}
-
-                                <button
-                                    type="button"
-                                    onClick={() => handleDeleteQuestion(question.id)}
-                                >
-                                    <img src={deleteImg} alt="Remover pergunta" />
-                                </button>
-                            </Question>
-                        );
-                    })}
-                </div>
-            </main>
-        </div >
+                                <div>
+                                    <p>Nenhuma pergunta por aqui...</p>
+                                    <span>
+                                        Envie o código desta sala para seus amigos
+                                        e comece a responder perguntas!
+                                    </span>
+                                </div>
+                            </div>
+                        )
+                        }
+                    </div>
+                </main>
+            </div>
+        </Container>
     );
 }
