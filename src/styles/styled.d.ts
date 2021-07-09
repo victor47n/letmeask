@@ -18,14 +18,34 @@ declare module 'styled-components' {
                 quinary: string;
             };
 
-            question: string;
+            button: {
+                background: string;
+                color: string;
+                outline: {
+                    background: string;
+                    color: string;
+                };
+            };
+
+            question: {
+                background: string;
+                highlighted: {
+                    background: string;
+                    border: string;
+                    color: string;
+                };
+                answered: {
+                    background: string;
+                    color: string;
+                }
+            };
 
             border: string;
 
             badge: {
                 primary: string;
                 secondary: string;
-            }
+            };
         };
     }
 }

@@ -15,8 +15,28 @@ const theme = {
             quinary: '#F8F8F8',
         },
 
-        question: '#DBDCDD',
-        
+        button: {
+            background: '#835AFD',
+            color: '#F2F2F2',
+            outline: {
+                background: '#F8F8F8',
+                color: '#835AFD',
+            },
+        },
+
+        question: {
+            background: '#FEFEFE',
+            highlighted: {
+                background: '#F4F0FF',
+                border: '#835AFD',
+                color: '#292925',
+            },
+            answered: {
+                background: '#DBDCDD',
+                color: '#7E7E7E',
+            }
+        },
+                
         border: '#A8A8B3',
 
         badge: {

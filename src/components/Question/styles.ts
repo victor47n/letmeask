@@ -2,34 +2,42 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 .question {
-    background: #FEFEFE;
+    background: ${props => props.theme.colors.question.background};
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
     padding: 24px;
-
-    & + .question {
-        margin-top: 8px;
-    }    
+    transition: .5s;
 
     &.highlighted {
-        background: #F4F0FF;
-        border: 1px solid #835AFD;
+        background: ${props => props.theme.colors.question.highlighted.background};
+        border: 1px solid ${props => props.theme.colors.question.highlighted.border};
 
         footer .user-info span {
-            color: #292925;
+            color: ${props => props.theme.colors.question.highlighted.color};
         }
     }
 
     &.answered {
-        background: #DBDCDD;
+        background: ${props => props.theme.colors.question.answered.background};
+        
+        p {
+            color: ${props => props.theme.colors.question.answered.color};            
+        }
 
-        footer .user-info img {
-            filter: grayscale(1)
+        footer .user-info {
+             img {
+                filter: grayscale(1)
+             }
+
+             span {
+                 color: ${props => props.theme.colors.question.answered.color};
+             }
         }
     }
 
     p {
-        color: #29292E;        
+        color: ${props => props.theme.colors.text.primary};
+        transition: .5s;     
     }
 
     footer {
@@ -50,8 +58,9 @@ export const Container = styled.div`
 
             > span {
                 margin-left: 8px;
-                color: #737380;
+                color: ${props => props.theme.colors.text.secondary};
                 font-size: 14px;
+                transition: .5s;
             }
         }
 
@@ -68,15 +77,15 @@ export const Container = styled.div`
             &.like-button {
                 display: flex;
                 align-items: flex-end;
-                color: #737380;
+                color: ${props => props.theme.colors.text.secondary};
                 gap: 8px;
                 transition: filter .2s;
 
                 &.liked {
-                    color: #835AFD;
+                    color: ${props => props.theme.colors.button.background};
 
                     svg path {
-                        stroke: #835AFD
+                        stroke: ${props => props.theme.colors.button.background}
                     }
                 }
             }

@@ -1,17 +1,19 @@
 import { useHistory, useParams } from 'react-router-dom';
 
-import logoImg from '../assets/images/logo.svg';
 import deleteImg from '../assets/images/delete.svg';
 import checkImg from '../assets/images/check.svg';
 import answerImg from '../assets/images/answer.svg';
 import emptyQuestion from '../assets/images/empty-questions.svg';
 
 import { Button } from '../components/Button';
+import { Logo } from '../components/Logo';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
-import { useRoom } from '../hooks/useRoom';
+import { ToggleSwitch } from '../components/ToggleSwitch';
 
 import { Container } from '../styles/room';
+
+import { useRoom } from '../hooks/useRoom';
 
 import { database } from '../services/firebase';
 
@@ -57,12 +59,13 @@ export function AdminRoom() {
             <div id="page-room">
                 <header>
                     <div className="content">
-                        <img src={logoImg} alt="Letmeask" />
+                        <Logo />
                         <div>
                             <RoomCode code={roomId} />
                             <Button isOutlined onClick={handleCloseRoom}>Encerrar sala</Button>
                         </div>
                     </div>
+                    <ToggleSwitch class="toggle-theme" />
                 </header>
 
                 <main>
