@@ -6,7 +6,8 @@ export const Container = styled.div`
         display: flex;
         justify-content: space-between;
         padding: 24px;
-        border-bottom: 1px solid ${props => props.theme.colors.border};
+        border-bottom: 1px solid ${props => props.theme.colors.details};
+        transition: .5s;
 
         .content {
             width: 100%;
@@ -72,7 +73,7 @@ export const Container = styled.div`
                 border: 0;
                 padding: 16px;
                 border-radius: 8px;
-                background: ${props => props.theme.colors.details};
+                background: ${props => props.theme.colors.question.background};
                 box-shadow: 0 2px 12px rgba(0, 0, 0, .04);
                 resize: vertical;
                 min-height: 130px;

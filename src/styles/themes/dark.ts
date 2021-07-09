@@ -3,9 +3,9 @@ const theme = {
 
     colors: {
         primary: '#333333',
-        secondary: '#E73F5D',
+        secondary: '#CF6679',
         background: '#121212',
-        details: '#2E2E2E',
+        details: '#1E1E1E',
 
         text: {
             primary: '#FEFEFE',
@@ -32,7 +32,7 @@ const theme = {
                 color: '#FEFEFE',
             },
             answered: {
-                background: '#1D1D1D',
+                background: '#1E1E1E',
                 color: '#7E7E7E',
             }
         },

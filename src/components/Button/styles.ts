@@ -16,7 +16,7 @@ export const Container = styled.div`
     cursor: pointer;
     border: 0;
 
-    transition: filter 0.2s;
+    transition: filter 0.2s, background .5s, color .5s;
 
     img {
         margin-right: 8px;
